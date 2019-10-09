@@ -7,7 +7,7 @@
 '''
 import  requests,json,jenkins,os,time
 
-# 接受jenkins当前JOB_NAME参数
+# 接收jenkins当前JOB_NAME参数
 projectName = os.getenv("JOB_NAME")
 
 def sendding(Dingtalk_access_token,content,title,messageUrl):
@@ -69,14 +69,14 @@ def notification():
         messageUrl = 'http://www.iconsdb.com/icons/preview/soylent-red/x-mark-3-xxl.png'
         statusStr = '失败'
     elif status == 'OK':
-        statusStr = '成功'
+        statusStr = '通过'
         # 正确图片
         messageUrl = 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-check-icon.png'
 
     # 消息内容。如果太长只会部分展示
     code_reslut=  "Bug数:" + bug + "个，" + \
                   "漏洞数:" + leak + "个，" + \
-                  "可能存在问题代码："+ code_smell + "行，" + \
+                  "可能存在问题代码:"+ code_smell + "行，" + \
                   "覆盖率:" + coverage + "%，" + \
                   "重复率:" + density + "%"
     print("静态代码扫描统计："+"状态:"+ status +","+code_reslut)
